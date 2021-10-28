@@ -1,0 +1,7 @@
+{
+  "common": {
+    "ticker_live_lorikeet": {
+      "tickers": ["goog", "aapl"]
+    }
+  }
+}
