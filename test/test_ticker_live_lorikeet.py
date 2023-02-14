@@ -52,7 +52,7 @@ def test_sneak_peak(monkeypatch):
     config = {
         "class": "TickerLiveLorikeet",
         "module": "tgedr.pipeline.source.ticker_live_lorikeet",
-        "config": {"tickers": {"value": ["goog", "aapl"]}},
+        "config": {"tickers": {"value": ["goog", "aapl", "ibm", "tsla"]}},
     }
     o = Factory.get_source(config=config)
-    assert 2 == len(o.get()), "oopps"
+    assert 4 == len(o.get()), "oopps"

@@ -1,11 +1,8 @@
-import logging
 from typing import Any, Dict
 
 from tgedr.pipeline.common.common import PipelineConfigException, PipelineSourceException
 from tgedr.pipeline.common.source import PipelineSource
 from yahoo_fin import stock_info
-
-log = logging.getLogger(__name__)
 
 
 class TickerLiveLorikeet(PipelineSource):
@@ -19,7 +16,6 @@ class TickerLiveLorikeet(PipelineSource):
 
     def get(self) -> Any:
         self.log.info("[get|in]")
-
         result = []
         for ticker in self.__tickers:
             try:
@@ -31,9 +27,10 @@ class TickerLiveLorikeet(PipelineSource):
         return result
 
     def _validate_config(self, config: Dict[str, Any]) -> None:
-        self.log.info(f"[_validate_config|in]{config}")
+        self.log.info(f"[_validate_config|in]({config})")
         expected_configs = ["tickers"]
         actual_configs = list(config.keys())
         if not all(conf in actual_configs for conf in expected_configs):
             raise PipelineConfigException(f"expected configs: {expected_configs} \n actual configs: {actual_configs}")
         self.log.info("[_validate_config|out]")
+
